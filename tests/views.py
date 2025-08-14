@@ -27,7 +27,7 @@ def markColor(mark):
 
 
 def welcome(request, user):
-    del request.session['user']
+    # del request.session['user']
     user_data = Enrollment.objects.filter(student=user)
     marks = user_data.values_list("mark", flat=True)
     colors = []
@@ -63,7 +63,7 @@ class Login(View):
       
       # request.session['user'] = key.user_id
       if password == key.password:
-        
+        print(key)
         return welcome(request,user=key)
       else:
           flag = True
