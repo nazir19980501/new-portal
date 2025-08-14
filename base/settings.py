@@ -133,7 +133,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 
-CSRF_TRUSTED_ORIGINS = ['https://new-portal-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://new-portal-production.up.railway.app','https://new-portal-two.vercel.app']
 
 
 # Default primary key field type
