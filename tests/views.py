@@ -61,7 +61,7 @@ class Login(View):
         flag = True
         return render(request, 'starting-page.html',{'flag':flag})
       
-      request.session['user'] = key.user_id
+      # request.session['user'] = key.user_id
       if password == key.password:
         
         return welcome(request,user=key)
@@ -71,6 +71,7 @@ class Login(View):
      
     
     else: 
+      # request.session['user'] = request.POST['user-id']
       return HttpResponseRedirect('/reset-password')
       
        
@@ -92,7 +93,8 @@ class Reset(View):
     return render(request, 'password-reset.html')
   
   def post(self, request):
-     user_id = request.session['user']
+     user_id = request.POST['user_id']
+     request.session['user'] = user_id
      user = Students.objects.get(user_id=user_id)
      email = request.POST['email']
      if email == user.email:
