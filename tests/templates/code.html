@@ -1,0 +1,59 @@
+{% extends "base1.html" %}
+
+{% block title %} Verify code {% endblock  %}
+
+
+{% block content %}
+
+<form  method="POST" action="/code">
+  {% csrf_token %}
+<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+  <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-amber-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+    </div>
+    <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+
+      <div class="max-w-md mx-auto">
+        <div>
+          <h1 class="text-2xl font-semibold text-black mb-2"> The confirmation code was sent to your email </h1>
+          <h1 class="text-md font-semibold text-black my-4">Your Password resets after you enter the code correctly </h1>
+
+          {% if flag %}
+          <p class="text-xl mt-4 font-semibold text-black"> The code you entered is incorrct</p>
+          {% endif %}
+          {% if pas %}
+          <p class="text-xl mt-4 font-semibold text-black"> Password does not match</p>
+          {% endif %}
+          
+        </div>
+          <div class="relative">
+              
+              <input  name="password" required type="password" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder=" New Password" />
+              <label for="password" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">New Password</label>
+            </div>
+             <div class="relative">
+              
+              <input  name="password-retype" required type="password" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 my-4" placeholder=" Retype Password" />
+              <label for="password" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Retype Password</label>
+            </div>
+       
+            <div class="relative">
+             
+              <input autocomplete="on"  name="code" required type="text" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none " placeholder="6 digit code" />
+              
+            </div>
+          
+           
+            <div class="relative">
+              <button type="submit" class="bg-green-400 text-white rounded-md px-2 my-4 py-1">Verify</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+{% endblock  %}
