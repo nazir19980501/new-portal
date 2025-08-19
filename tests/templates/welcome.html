@@ -1,0 +1,97 @@
+{% extends "base1.html" %}
+{% load custom_tags %}
+
+
+
+{% block title %} Welcome {% endblock  %}
+
+
+
+
+{% block content %}
+
+
+  {% include "includes/header.html" %}
+
+  
+<section id="welcome" class="p-6 flex flex-col md:flex-row items-center justify-center space-x-20">
+  <div class=" py-6 flex flex-col justify-center sm:py-12 ">
+  <div class="relative py-3 sm:max-w-xl sm:mx-auto group">
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-amber-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl group-hover:-rotate-3 duration-300">
+    </div>
+    <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20 ">
+
+      <div class="max-w-md mx-auto">
+        <div>
+          <h1 class="text-4xl text-blue-400 mb-4">{{user}}</h1>
+          <h1 class="text-2xl font-semibold text-black">Welcome To your Dashboard</h1>
+          
+        </div>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+
+
+
+<div class="block w-full overflow-x-auto max-w-2xl border">
+    
+    <table class="items-center w-full  bg-transparent border-collapse ">
+        <thead>
+            <tr>
+                <th
+                    class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-sm font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+                    REF#</th>
+                <th
+                    class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-sm font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+                    Subject ID</th>
+                <th
+                    class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-sm font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+                    Subject </th>
+                 <th
+                    class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-sm font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px">
+                    credit
+                </th>
+                <th
+                    class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-sm font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+                    Student Marks</th>
+                <th
+                    class="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-sm font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
+                    Instructor</th>
+                </tr>
+        </thead>
+       
+        <tbody class="divide-y divide-gray-100">
+            {% for field in user_data %}
+            <tr class="text-gray-500">
+                <th class="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
+                    {{forloop.counter}}</th>
+                <td class="border-t-0 px-4 align-middle text-sm font-medium text-gray-900 whitespace-nowrap p-4">
+                    {{field.subject.subject_id}}</td>
+                <td class="border-t-0 px-4 align-middle text-sm font-medium text-gray-900 whitespace-nowrap p-4">
+                    {{field.subject.name}}</td>
+                
+                <td class="border-t-0 px-4 align-middle text-sm font-medium text-gray-900 whitespace-nowrap p-4">
+                    {{field.subject.credit}}</td>
+                <td class="border-t-0 px-4 align-middle text-sm whitespace-nowrap p-4">
+                    <div class="flex items-center">
+                        <span class="mr-2 text-xs font-medium">{{field.mark}}%</span>
+                        <div class="relative w-full -z-10">
+                            <div class="w-full bg-gray-200 rounded-sm h-2">
+                                <div class="{{ colors|index:forloop.counter0 }} h-2 rounded-sm" style="width: {{field.mark}}%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="border-t-0 px-4 align-middle text-sm font-medium text-gray-900 whitespace-nowrap p-4">
+                    {{field.subject.instructor}}</td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+</div>
+</section>
+{% endblock %}
