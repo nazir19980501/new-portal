@@ -11,7 +11,7 @@
       "src": "/(.*)",
       "dest": "new_portal/wsgi.py"
     }
-  ],
+  ]
   
 
 }
