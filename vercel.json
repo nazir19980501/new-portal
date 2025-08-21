@@ -11,5 +11,13 @@
       "src": "/(.*)",
       "dest": "new_portal/wsgi.py"
     }
-  ]
+  ],
+  
+  "functions": {
+    "api/**": {
+      "excludeFiles": "{.next,*.cache,node_modules,public,app}/**"
+    }
+  }
 }
+  
+
