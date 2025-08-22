@@ -9,7 +9,6 @@ __pycache__/
 .venv/
 venv/
 .git/
-.gitignore
 media/
 staticfiles/
 node_modules/
